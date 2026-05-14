@@ -1,0 +1,8 @@
+# 垃圾影音
+IP-CIDR,172.67.211.198/32,no-resolve
+IP-CIDR,172.67.146.17/32,no-resolve
+IP-CIDR,104.21.77.212/32,no-resolve
+IP-CIDR,104.21.63.139/32,no-resolve
+
+# 垃圾影音
+DOMAIN,cflocal.xxlb.net

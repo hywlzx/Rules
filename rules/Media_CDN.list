@@ -1,0 +1,21 @@
+## CDN分流
+#DOMAIN,cdn2.turboviplay.com
+DOMAIN-SUFFIX,turboviplay.com
+DOMAIN-SUFFIX,filezfarm.com
+DOMAIN-SUFFIX,dylancyp.com
+DOMAIN-SUFFIX,samtnauo.com
+DOMAIN-SUFFIX,tupkho.com
+DOMAIN-SUFFIX,mandamla.com
+DOMAIN-SUFFIX,chanchae.com
+DOMAIN-SUFFIX,turbosplayer.com
+DOMAIN-SUFFIX,tiktokcdn.com
+DOMAIN-SUFFIX,sacdnssedge.com
+
+## TIRN-cdn
+DOMAIN,7d2a9891539d2604.cdn.jiashule.com
+
+## missav-media
+DOMAIN-SUFFIX,surrit.com
+
+## pornhub-cdn
+DOMAIN-SUFFIX,phncdn.com

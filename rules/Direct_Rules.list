@@ -1,0 +1,11 @@
+## 内网穿透
+#DOMAIN-SUFFIX,spaceink.top
+DOMAIN-KEYWORD,tailscale
+
+## 镜像源
+DOMAIN,mirrors.aliyun.com
+DOMAIN,mirrors.cernet.edu.cn
+DOMAIN,mirrors.ustc.edu.cn
+
+## 机场订阅直连
+DOMAIN-SUFFIX,wd-blue.com
