@@ -10,6 +10,7 @@ anchor:
   # 策略组类型模板 - 定义不同的策略组基础配置
   BaseURL-test: &BaseURL-test {type: url-test, include-all: true, tolerance: 20, interval: 120, url: https://cp.cloudflare.com/generate_204, hidden: true}
   BaseDIRECT: &BaseDIRECT {type: url-test, hidden: true}
+  BaseSelect: &BaseSelect {type: select, include-all: true}
   # 节点筛选正则表达式 - 基于地理位置和关键词过滤
   FilterHK: &FilterHK '^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG)).*$'
   FilterSG: &FilterSG '^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP)).*$'
@@ -66,11 +67,11 @@ proxy-groups:
   - {name: 测速工具,        <<: *SelectHK,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/SpeedTest.png"}
   - {name: 漏网之鱼,        <<: *SelectMH,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/match.png"}
   - {name: 媒体CDN,         <<: *SelectMS,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/media.png"}
-  - {name: 香港节点,        <<: *BaseURL-test,    filter: *FilterHK,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Hong_Kong.png"}
-  - {name: 美国节点,        <<: *BaseURL-test,    filter: *FilterUS,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/USA.png"}
-  - {name: 日本节点,        <<: *BaseURL-test,    filter: *FilterJP,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Japan.png"}
-  - {name: 新加坡节点,      <<: *BaseURL-test,    filter: *FilterSG,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Singapore.png"}
-  - {name: 台湾节点,        <<: *BaseURL-test,    filter: *FilterTW,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Taiwan_Province.png"}
+  - {name: 香港节点,        <<: *BaseSelect,      filter: *FilterHK,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Hong_Kong.png"}
+  - {name: 美国节点,        <<: *BaseSelect,      filter: *FilterUS,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/USA.png"}
+  - {name: 日本节点,        <<: *BaseSelect,      filter: *FilterJP,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Japan.png"}
+  - {name: 新加坡节点,      <<: *BaseSelect,      filter: *FilterSG,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Singapore.png"}
+  - {name: 台湾节点,        <<: *BaseSelect,      filter: *FilterTW,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Taiwan_Province.png"}
   - {name: 全球直连,        <<: *BaseDIRECT,      proxies: [DIRECT],       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/DIRECT.png"}
 
 # =========================================
