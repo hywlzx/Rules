@@ -17,6 +17,7 @@ anchor:
   FilterJP: &FilterJP '^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK)).*$'
   FilterUS: &FilterUS '^(?=.*(?i)(美|🇺🇸|US|USA|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD)).*$'
   FilterTW: &FilterTW '^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH)).*$'
+  FilterRemain: &FilterRemain '^(?=.*(?i)(剩余流量|剩余|流量|Traffic|Quota|Balance|Expire|到期|套餐)).*$'
 
   # 策略组代理列表模板 - 预定义的代理节点优先级排序
   SelectAU: &SelectAU {type: url-test, include-all: true, tolerance: 20, interval: 120, filter: "^((?!(直连)).)*$"}
@@ -38,6 +39,7 @@ anchor:
 #             策略组配置
 # =========================================
 proxy-groups:
+  - {name: 套餐信息,        <<: *BaseSelect,      filter: *FilterRemain,   icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/cfip.png"}
   - {name: 手动选择,        <<: *SelectMS,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/11111.png"}
   - {name: 自动选择,        <<: *SelectAU,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Flight.png"}
   - {name: 即时通讯,        <<: *SelectHK,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Telegram.png"}
