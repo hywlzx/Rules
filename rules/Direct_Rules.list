@@ -9,3 +9,6 @@ DOMAIN,mirrors.ustc.edu.cn
 
 ## 机场订阅直连
 DOMAIN-SUFFIX,wd-blue.com
+
+## 媒体
+DOMAIN-KEYWORD,libvio
