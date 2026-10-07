@@ -28,6 +28,7 @@ anchor:
   SelectSG: &SelectSG {type: select, proxies: [新加坡节点, 香港节点, 美国节点, 日本节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
   SelectJP: &SelectJP {type: select, proxies: [日本节点, 香港节点, 美国节点, 新加坡节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
   SelectTW: &SelectTW {type: select, proxies: [台湾节点, 香港节点, 美国节点, 新加坡节点, 日本节点, 手动选择, 自动选择, 全球直连]}
+  EmbySelect: &EmbySelect {type: select, proxies: [Emby, 新加坡节点, 香港节点, 美国节点, 日本节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
 
   # 规则提供者相关锚点
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
@@ -56,7 +57,7 @@ proxy-groups:
   - {name: HBO,             <<: *SelectSG,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/HBO_MAX.png"}
   - {name: PrimeVideo,      <<: *SelectSG,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Prime.png"}
   - {name: Emby,            <<: *SelectSG,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Emby.png"}
-  - {name: Emby后端,        <<: *SelectSG,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Emby.png"}
+  - {name: Emby后端,        <<: *EmbySelect,                               icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Emby.png"}
   - {name: Spotify,         <<: *SelectHK,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Spotify.png"}
   - {name: Bahamut,         <<: *SelectTW,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Bahamut_i.png"}
   - {name: 国外媒体,        <<: *SelectSG,                                 icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Network.png"}
@@ -80,7 +81,9 @@ proxy-groups:
 #                 规则配置
 # =========================================
 rules:
+  - RULE-SET,media-custom,国外媒体
   - RULE-SET,media-cdn,媒体CDN
+  - RULE-SET,direct-custom,全球直连
   - RULE-SET,device-control,香港节点
   - RULE-SET,emby,Emby
   - RULE-SET,emby-backend,Emby后端
@@ -182,8 +185,9 @@ rule-providers:
   cn:                                       {<<: *domain,           url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
   cn-ip:                                    {<<: *ip,               url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   PayPal:                                   {<<: *domain,           url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs"}
-  direct_custom:                            {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Direct_Rules.list"}
+  direct-custom:                            {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Direct_Rules.list"}
   media-cdn:                                {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Media_CDN.list"}
   device-control:                           {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Device.list"}
   emby:                                     {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Emby.list"}
   emby-backend:                             {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Emby_Backend.list"}
+  media-custom:                             {<<: *class,            url: "https://raw.githubusercontent.com/hywlzx/Rules/refs/heads/main/rules/Media_Custom.list"}
