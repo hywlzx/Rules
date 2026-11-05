@@ -17,18 +17,19 @@ anchor:
   FilterJP: &FilterJP '^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK)).*$'
   FilterUS: &FilterUS '^(?=.*(?i)(美|🇺🇸|US|USA|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD)).*$'
   FilterTW: &FilterTW '^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH)).*$'
+  FilterKR: &FilterKR '^(?i)(?=.*(韩国|韓國|首尔|首爾|南朝鲜|(?<![a-zA-Z])(kr|icn|gmp|pus)(?![a-zA-Z])|korea|seoul|🇰🇷))(?!.*(排除)).*$'
   FilterRemain: &FilterRemain '^(?=.*(?i)(剩余流量|剩余|流量|Traffic|Quota|Balance|Expire|到期|套餐)).*$'
 
   # 策略组代理列表模板 - 预定义的代理节点优先级排序
   SelectAU: &SelectAU {type: url-test, include-all: true, tolerance: 20, interval: 120, filter: "^((?!(直连)).)*$"}
-  SelectMS: &SelectMS {type: select, proxies: [香港节点, 美国节点, 日本节点, 新加坡节点, 台湾节点, 自动选择, 全球直连]}
-  SelectMH: &SelectMH {type: select, proxies: [台湾节点, 香港节点, 美国节点, 新加坡节点, 日本节点, 手动选择, 自动选择, 全球直连]}
-  SelectHK: &SelectHK {type: select, proxies: [香港节点, 美国节点, 新加坡节点, 日本节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
-  SelectUS: &SelectUS {type: select, proxies: [美国节点, 香港节点, 新加坡节点, 日本节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
-  SelectSG: &SelectSG {type: select, proxies: [新加坡节点, 香港节点, 美国节点, 日本节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
-  SelectJP: &SelectJP {type: select, proxies: [日本节点, 香港节点, 美国节点, 新加坡节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
-  SelectTW: &SelectTW {type: select, proxies: [台湾节点, 香港节点, 美国节点, 新加坡节点, 日本节点, 手动选择, 自动选择, 全球直连]}
-  EmbySelect: &EmbySelect {type: select, proxies: [Emby, 新加坡节点, 香港节点, 美国节点, 日本节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
+  SelectMS: &SelectMS {type: select, proxies: [香港节点, 美国节点, 日本节点, 新加坡节点, 台湾节点, 韩国节点, 自动选择, 全球直连]}
+  SelectMH: &SelectMH {type: select, proxies: [台湾节点, 香港节点, 美国节点, 新加坡节点, 日本节点, 韩国节点, 手动选择, 自动选择, 全球直连]}
+  SelectHK: &SelectHK {type: select, proxies: [香港节点, 美国节点, 新加坡节点, 日本节点, 台湾节点, 韩国节点, 手动选择, 自动选择, 全球直连]}
+  SelectUS: &SelectUS {type: select, proxies: [美国节点, 香港节点, 新加坡节点, 日本节点, 台湾节点, 韩国节点, 手动选择, 自动选择, 全球直连]}
+  SelectSG: &SelectSG {type: select, proxies: [新加坡节点, 香港节点, 美国节点, 日本节点, 台湾节点, 韩国节点, 手动选择, 自动选择, 全球直连]}
+  SelectJP: &SelectJP {type: select, proxies: [日本节点, 香港节点, 美国节点, 新加坡节点, 台湾节点, 韩国节点, 手动选择, 自动选择, 全球直连]}
+  SelectTW: &SelectTW {type: select, proxies: [台湾节点, 香港节点, 美国节点, 新加坡节点, 日本节点, 韩国节点, 手动选择, 自动选择, 全球直连]}
+  EmbySelect: &EmbySelect {type: select, proxies: [Emby, 新加坡节点, 香港节点, 美国节点, 日本节点, 韩国节点, 台湾节点, 手动选择, 自动选择, 全球直连]}
 
   # 规则提供者相关锚点
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
@@ -75,6 +76,7 @@ proxy-groups:
   - {name: 日本节点,        <<: *BaseSelect,      filter: *FilterJP,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Japan.png"}
   - {name: 新加坡节点,      <<: *BaseSelect,      filter: *FilterSG,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Singapore.png"}
   - {name: 台湾节点,        <<: *BaseSelect,      filter: *FilterTW,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/Taiwan_Province.png"}
+  - {name: 韩国节点,        <<: *BaseSelect,      filter: *FilterKR,       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/South_Korea.png"}
   - {name: 全球直连,        <<: *BaseDIRECT,      proxies: [DIRECT],       icon: "https://raw.githubusercontent.com//Giveupmoon/Clash_Rules_Yaml/main/Icon/HOMOMIX/Color/Large/DIRECT.png"}
 
 # =========================================
