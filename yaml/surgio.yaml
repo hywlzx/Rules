@@ -1,12 +1,6 @@
 unified-delay: true
 tcp-concurrent: true
 dns:
-  nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  default-nameserver:
-    - https://223.5.5.5/dns-query
-    - tls://1.1.1.1:853
   enable: true
   ipv6: false
   fake-ip-range: 198.18.0.1/16
