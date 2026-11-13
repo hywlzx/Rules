@@ -2,29 +2,39 @@ name: Mirror to Codeberg
 
 on:
   schedule:
-    # 凌晨0点同步一次
     - cron: "0 0 * * *"
 
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   mirror:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Clone GitHub repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${AUTH}" \
+            clone --bare \
+            "https://github.com/${GITHUB_REPOSITORY}.git" \
+            mirror.git
 
       - name: Push mirror to Codeberg
-        run: |
-          git remote add codeberg \
-            https://$CODEBERG_USER:$CODEBERG_TOKEN@codeberg.org/$CODEBERG_USER/$CODEBERG_REPO.git
-
-          git push --mirror codeberg
-
         env:
           CODEBERG_USER: ray_huang
           CODEBERG_REPO: Rules
           CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+        run: |
+          cd mirror.git
+
+          git remote add codeberg \
+            "https://${CODEBERG_USER}:${CODEBERG_TOKEN}@codeberg.org/${CODEBERG_USER}/${CODEBERG_REPO}.git"
+
+          git push --mirror codeberg
+
